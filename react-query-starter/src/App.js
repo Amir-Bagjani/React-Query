@@ -3,6 +3,8 @@ import './App.css'
 import { HomePage } from './components/Home.page'
 import { RQSuperHeroesPage } from './components/RQSuperHeroes.page'
 import { SuperHeroesPage } from './components/SuperHeroes.page'
+import SuperHeroDetail from './components/SuperHeroDetail.page'
+import ParallelQueries from './components/ParallelQueries'
 
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools'
@@ -27,6 +29,12 @@ function AppWrapper() {
           </ul>
         </nav>
         <Switch>
+          <Route path='/rq-parallel'>
+            <ParallelQueries />
+          </Route>
+          <Route path='/rq-super-heroes/:id'>
+            <SuperHeroDetail />
+          </Route>
           <Route path='/super-heroes'>
             <SuperHeroesPage />
           </Route>
