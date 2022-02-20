@@ -1,10 +1,23 @@
-import { useQuery } from "react-query";
-import axios from "axios";
+import { useQuery, useQueryClient } from 'react-query'
+import axios from 'axios'
 
-const fetchData = (id) => axios.get(`http://localhost:3030/superheroes/${id}`);
+const fetchSuperHero = ({ queryKey }) => {
+  const heroId = queryKey[1]
+  return axios.get(`http://localhost:3030/superheroes/${heroId}`)
+}
 
-const useQueryById = (id) => {
-  return useQuery(["super-hero", id], () => fetchData(id));
-};
-
-export default useQueryById;
+export const useQueryById = (heroId) => {
+  const queryClient = useQueryClient()
+  return useQuery(['super-hero', heroId], fetchSuperHero, {
+    initialData: () => {
+      const hero = queryClient
+        .getQueryData('super-heroes')
+        ?.data?.find(hero => hero.id === parseInt(heroId))
+      if (hero) {
+        return { data: hero }
+      } else {
+        return undefined
+      }
+    }
+  })
+}
