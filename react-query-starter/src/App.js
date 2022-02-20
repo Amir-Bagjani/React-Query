@@ -4,7 +4,11 @@ import { HomePage } from './components/Home.page'
 import { RQSuperHeroesPage } from './components/RQSuperHeroes.page'
 import { SuperHeroesPage } from './components/SuperHeroes.page'
 
-function App() {
+import { QueryClientProvider, QueryClient } from 'react-query'
+
+const queryClient = new QueryClient()
+
+function AppWrapper() {
   return (
     <Router>
       <div>
@@ -34,6 +38,14 @@ function App() {
         </Switch>
       </div>
     </Router>
+  )
+}
+
+function App(){
+  return(
+    <QueryClientProvider client={queryClient}>
+      <AppWrapper />
+    </QueryClientProvider>
   )
 }
 
