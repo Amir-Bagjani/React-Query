@@ -8,8 +8,8 @@ export const RQSuperHeroesPage = () => {
     "super-hero",
     fetchData,
     { 
-      refetchOnWindowFocus: true, //the best option is true
-      staleTime: 3000
+      refetchInterval: 3000,
+      refetchIntervalInBackground: true
     }
   );
   console.log({ isFetching, isLoading });
