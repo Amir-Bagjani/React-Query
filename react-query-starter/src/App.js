@@ -8,6 +8,7 @@ import ParallelQueries from './components/ParallelQueries'
 
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools'
+import DynamicParallrQueries from './components/DynamicParallrQueries'
 
 const queryClient = new QueryClient()
 
@@ -29,9 +30,15 @@ function AppWrapper() {
             <li>
               <Link to='/rq-parallel'>Parallel Queries</Link>
             </li>
+            <li>
+              <Link to='/rq-dynamic-parallel'>Dynamic Parallel Queries</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
+          <Route path='/rq-dynamic-parallel'>
+            <DynamicParallrQueries ids={[1, 3]} />
+          </Route>
           <Route path='/rq-parallel'>
             <ParallelQueries />
           </Route>
