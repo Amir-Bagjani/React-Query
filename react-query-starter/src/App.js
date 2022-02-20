@@ -10,6 +10,7 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools'
 import DynamicParallrQueries from './components/DynamicParallrQueries'
 import DepQueryPage from './components/DepQueryPage'
+import PaginatedQueriesPage from './components/PaginatedQueriesPage'
 
 const queryClient = new QueryClient()
 
@@ -37,9 +38,15 @@ function AppWrapper() {
             <li>
               <Link to='/rq-dependent'>dependent</Link>
             </li>
+            <li>
+              <Link to='/rq-paginate'>paginate</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
+          <Route path='/rq-paginate'>
+            <PaginatedQueriesPage />
+          </Route>
           <Route path='/rq-dependent'>
             <DepQueryPage email="amir@gmail.com" />
           </Route>
