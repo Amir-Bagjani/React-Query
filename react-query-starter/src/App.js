@@ -5,12 +5,13 @@ import { RQSuperHeroesPage } from './components/RQSuperHeroes.page'
 import { SuperHeroesPage } from './components/SuperHeroes.page'
 import SuperHeroDetail from './components/SuperHeroDetail.page'
 import ParallelQueries from './components/ParallelQueries'
-
-import { QueryClientProvider, QueryClient } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools'
 import DynamicParallrQueries from './components/DynamicParallrQueries'
 import DepQueryPage from './components/DepQueryPage'
 import PaginatedQueriesPage from './components/PaginatedQueriesPage'
+import InfiniteQuerisPage from './components/InfiniteQuerisPage'
+
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 const queryClient = new QueryClient()
 
@@ -41,11 +42,17 @@ function AppWrapper() {
             <li>
               <Link to='/rq-paginate'>paginate</Link>
             </li>
+            <li>
+              <Link to='/rq-infinite'>infinite</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
           <Route path='/rq-paginate'>
             <PaginatedQueriesPage />
+          </Route>
+          <Route path='/rq-infinite'>
+            <InfiniteQuerisPage />
           </Route>
           <Route path='/rq-dependent'>
             <DepQueryPage email="amir@gmail.com" />
