@@ -7,7 +7,7 @@ export const SuperHeroesPage = () => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    axios.get('http://localhost:3030/superheroes1').then(res => {
+    axios.get('http://localhost:3030/superheroes').then(res => {
       setData(res.data)
       setIsLoading(false)
     }).catch(error => {
@@ -27,7 +27,7 @@ export const SuperHeroesPage = () => {
     <>
       <h2>Super Heroes Page</h2>
       {data.map(hero => {
-        return <div>{hero.name}</div>
+        return <div key={hero.id}>{hero.name}</div>
       })}
     </>
   )

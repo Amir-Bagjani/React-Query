@@ -1,6 +1,6 @@
 nav ul {
   display: flex;
-  background-color: blanchedalmond;
+  background-color: rgb(225, 255, 205);
   margin-block-start: 0;
   padding: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
