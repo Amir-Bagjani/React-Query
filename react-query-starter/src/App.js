@@ -26,6 +26,9 @@ function AppWrapper() {
             <li>
               <Link to='/rq-super-heroes'>RQ Super Heroes</Link>
             </li>
+            <li>
+              <Link to='/rq-parallel'>Parallel Queries</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
