@@ -15,6 +15,7 @@ const PaginatedQueriesPage = () => {
 
   if (isLoading) return <p>Loading</p>;
   if (isError) return <p>{error.message}</p>;
+  
 
   return (
     <>

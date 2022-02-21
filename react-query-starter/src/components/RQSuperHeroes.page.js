@@ -1,22 +1,36 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import useQueryHook from "../hooks/useQueryHook";
+import useQueryHook, { useAddData } from "../hooks/useQueryHook";
 
 
 export const RQSuperHeroesPage = () => {
-  const onSuccess = (data) => {
-    console.log(`success`, data);
+  const [name,setName] = useState("")
+  const [alterEgo,setAlterEgo] = useState("")
+  
+ 
+  
+  const { isLoading, data, isError, error, refetch } = useQueryHook()
+  const { mutate: add } = useAddData()
+
+
+  const handleAdd = () => {
+    add({name, alterEgo},{onSuccess})
   }
-  const onError = (error) => {
-    console.log(`error`, error);
+
+  const onSuccess = () => {
+    refetch()
   }
-  const { isLoading, data, isError, error, isFetching, refetch } = useQueryHook(onSuccess, onError)
+
+  if (isLoading) return <p>Loading</p>;
+  if (isError) return <p>{error.message}</p>;
 
 
   return (
     <>
       <h2>React Query Super Heroes Page</h2>
-      {isLoading && <h2>Loading...</h2>}
-      {isError && <h2>{error.message}</h2>}
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      <input type="text" value={alterEgo} onChange={(e) => setAlterEgo(e.target.value)} />
+      <button onClick={handleAdd}>Add Hero</button>
       {data?.data.map((item) => (
         <p key={item.id}>
           <Link to={`rq-super-heroes/${item.id}`}>{item.name}</Link>
