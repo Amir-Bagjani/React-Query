@@ -11,11 +11,20 @@ const useQueryHook = () => {
 export const  useAddData = () => {
   const queryClient = useQueryClient()
   return useMutation(addData, {
-    onSuccess: (data) => {
+    onMutate: async(newHero) => {
+      await queryClient.cancelQueries("super-heroes");
+      const previousData = queryClient.getQueryData("super-heroes")
       queryClient.setQueryData("super-heroes", (oldQueryData) => {
-        return {...oldQueryData, data: [...oldQueryData.data, data.data]}
+        return {...oldQueryData, data: [...oldQueryData.data, {id: Math.random(), newHero}]}
       })
-    }
+      return {previousData}
+    },
+    onError: (_error, _hero, context) => {
+      queryClient.setQueryData("super-heroes", context.previousData)
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries("super-heroes")
+    },
   })
 }
 
