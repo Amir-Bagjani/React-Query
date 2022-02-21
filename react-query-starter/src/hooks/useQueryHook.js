@@ -1,8 +1,9 @@
 import { useQuery, useMutation, useQueryClient} from "react-query";
-import axios from "axios";
+import { request } from "../utils/axios-utils";
 
-const fetchData = () => axios.get("http://localhost:3030/superheroes");
-const addData = (hero) => axios.post("http://localhost:3030/superheroes", hero);
+
+const fetchData = () => request({url: '/superheroes'});
+const addData = (hero) => request({url: '/superheroes', method: 'post', data: hero});
 
 const useQueryHook = () => {
   return useQuery("super-heroes", fetchData);
