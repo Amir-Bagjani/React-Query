@@ -11,8 +11,10 @@ const useQueryHook = () => {
 export const  useAddData = () => {
   const queryClient = useQueryClient()
   return useMutation(addData, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("super-heroes")
+    onSuccess: (data) => {
+      queryClient.setQueryData("super-heroes", (oldQueryData) => {
+        return {...oldQueryData, data: [...oldQueryData.data, data.data]}
+      })
     }
   })
 }

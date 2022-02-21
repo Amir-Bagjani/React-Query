@@ -9,12 +9,14 @@ export const RQSuperHeroesPage = () => {
   
  
   
-  const { isLoading, data, isError, error, refetch } = useQueryHook()
+  const { isLoading, data, isError, error } = useQueryHook()
   const { mutate: add } = useAddData()
 
 
   const handleAdd = () => {
     add({name, alterEgo})
+    setAlterEgo("")
+    setName("")
   }
 
 
@@ -25,17 +27,19 @@ export const RQSuperHeroesPage = () => {
 
   return (
     <>
+
       <h2>React Query Super Heroes Page</h2>
+
       <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
       <input type="text" value={alterEgo} onChange={(e) => setAlterEgo(e.target.value)} />
       <button onClick={handleAdd}>Add Hero</button>
+
       {data?.data.map((item) => (
         <p key={item.id}>
           <Link to={`rq-super-heroes/${item.id}`}>{item.name}</Link>
-          {/* <input type="text" value={item.name} onChange={(e) => setNameChange(e.target.value)} />
-          <button onClick={handleEdit}>Add Hero</button> */}
         </p>
       ))}
+
     </>
   );
 };
