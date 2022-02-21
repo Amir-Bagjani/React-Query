@@ -1,20 +1,22 @@
-import { useQuery, useMutation} from "react-query";
+import { useQuery, useMutation, useQueryClient} from "react-query";
 import axios from "axios";
 
 const fetchData = () => axios.get("http://localhost:3030/superheroes");
 const addData = (hero) => axios.post("http://localhost:3030/superheroes", hero);
 
-const useQueryHook = (onSuccess, onError) => {
-  return useQuery("super-heroes", fetchData, {
-    // enabled: false,
-    // select: (data) => data.data.map((i) => i.name),
-    // onSuccess,
-    // onError
-  });
+const useQueryHook = () => {
+  return useQuery("super-heroes", fetchData);
 };
 
 export const  useAddData = () => {
-  return useMutation(addData)
+  const queryClient = useQueryClient()
+  return useMutation(addData, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("super-heroes")
+    }
+  })
 }
+
+
 
 export default useQueryHook;

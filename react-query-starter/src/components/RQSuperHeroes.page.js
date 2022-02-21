@@ -14,10 +14,10 @@ export const RQSuperHeroesPage = () => {
 
 
   const handleAdd = () => {
-    add({name, alterEgo},{onSuccess: () => {
-      refetch()
-    }})
+    add({name, alterEgo})
   }
+
+
 
   if (isLoading) return <p>Loading</p>;
   if (isError) return <p>{error.message}</p>;
@@ -32,6 +32,8 @@ export const RQSuperHeroesPage = () => {
       {data?.data.map((item) => (
         <p key={item.id}>
           <Link to={`rq-super-heroes/${item.id}`}>{item.name}</Link>
+          {/* <input type="text" value={item.name} onChange={(e) => setNameChange(e.target.value)} />
+          <button onClick={handleEdit}>Add Hero</button> */}
         </p>
       ))}
     </>
