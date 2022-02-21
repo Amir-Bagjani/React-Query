@@ -13,10 +13,8 @@ const useQueryHook = (onSuccess, onError) => {
   });
 };
 
-export const  useAddData = (onSuccess) => {
-  return useMutation(addData, {
-    onSuccess
-  })
+export const  useAddData = () => {
+  return useMutation(addData)
 }
 
 export default useQueryHook;

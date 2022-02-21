@@ -14,11 +14,9 @@ export const RQSuperHeroesPage = () => {
 
 
   const handleAdd = () => {
-    add({name, alterEgo},{onSuccess})
-  }
-
-  const onSuccess = () => {
-    refetch()
+    add({name, alterEgo},{onSuccess: () => {
+      refetch()
+    }})
   }
 
   if (isLoading) return <p>Loading</p>;
