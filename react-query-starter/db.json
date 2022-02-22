@@ -1,39 +1,14 @@
 {
   "superheroes": [
     {
-      "id": 1,
-      "name": "Batman",
-      "alterEgo": "Bruce Wayne"
+      "name": "fgsdfsf",
+      "alterEgo": "sdfadfsd",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Superman",
-      "alterEgo": "Clark Kent"
-    },
-    {
-      "name": "al;i",
-      "alterEgo": "553453",
-      "id": 4
-    },
-    {
-      "name": "amir",
-      "alterEgo": "amirda",
-      "id": 5
-    },
-    {
-      "name": "uu",
-      "alterEgo": "uu",
-      "id": 6
-    },
-    {
-      "name": "uuuu",
-      "alterEgo": "uuuuu",
-      "id": 7
-    },
-    {
-      "name": "ertr",
-      "alterEgo": "terter",
-      "id": 8
+      "name": "sfasdf",
+      "alterEgo": "dfasdf",
+      "id": 2
     }
   ],
   "friends": [
